@@ -2,10 +2,10 @@
 const express = required("express");
 const path = required('path');
 const fs = required("fs")
-const utils = required('utils')
+const util = required('util')
 
-const readFileAsync = utils.promisify(fs.readFile)
-const writeFile = utils.promiseify(fs.writeFile)
+const readFileAsync = util.promisify(fs.readFile)
+const writeFileAsync = util.promiseify(fs.writeFile)
 
 // create a server
 const PORT = process.env.PORT || 8000;
@@ -74,5 +74,5 @@ app.get("*", function (req, res) {
   
 // Start the server on the port
 app.listen(PORT, function () {
-    console.log("server is listening on port: " + PORT);
+    console.log(`server is listening on port: ${PORT}`);
   });
