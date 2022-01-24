@@ -60,19 +60,21 @@ app.delete("/api/notes/:id", function(req, res) {
 })
 
 //// HTML GET Requests
+//calls for note page
 app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, ".devolop/public/notes.html"));
   });
 
+//calls home page
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, ".devolop/public/notes.html"));
+    res.sendFile(path.join(__dirname, ".devolop/public/index.html"));
   });  
 
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, ".devolop/public/notes.html"));
+    res.sendFile(path.join(__dirname, ".devolop/public/index.html"));
   });  
   
 // Start the server on the port
 app.listen(PORT, function () {
-    console.log(`server is listening on port: ${PORT}`);
+    console.log("server is listening on port" + PORT);
   });
