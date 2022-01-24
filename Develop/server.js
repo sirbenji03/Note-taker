@@ -1,15 +1,15 @@
 // write your depencies here to interact with the front end
-const express = required("express");
-const path = required('path');
-const fs = required("fs")
-const util = required('util')
+const express = require("express");
+const path = require('path');
+const fs = require("fs");
+const util = require('util')
 const uuid = require("uuid");
 
 const readFileAsync = util.promisify(fs.readFile)
 const writeFileAsync = util.promiseify(fs.writeFile)
 
 // create a server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 4023;
 const app = express()
 
 // setting up middleware, body parsing and route 
@@ -34,6 +34,7 @@ app.post('/api/notes', function(req, res) {
     readFileAsync("./develop/db/db.json", "utf8").then(function(data) {
         const notes = []. concat(JSON.parse(data));
         note.id = notes.length + 1
+        newNotes.id = uuid.v4();
         notes.push(note);
         return notes
     }) .then(function(notes) {
